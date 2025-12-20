@@ -1,6 +1,6 @@
 import { type Node, type Edge, Position } from '@xyflow/react';
 
-export const fetchGraph = async (appId: string): Promise<{ nodes: Node[]; edges: Edge[] }> => {
+export const fetchGraph = async (): Promise<{ nodes: Node[]; edges: Edge[] }> => {
   await new Promise((r) => setTimeout(r, 700));
 
 

@@ -29,7 +29,7 @@ export default function Canvas() {
 
       nodes={nodes}
       edges={edges}
-      onNodeClick={(e: React.MouseEvent, n) => setNode(n.id)}
+      onNodeClick={(_, n) => setNode(n.id)}
       fitView
       className='dark'
        onConnect={(params) =>
