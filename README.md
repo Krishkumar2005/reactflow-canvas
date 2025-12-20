@@ -1,73 +1,86 @@
-# React + TypeScript + Vite
+# ReactFlow Canvas - App Graph Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small, responsive **App Graph Builder** UI demonstrating ReactFlow basics, Zustand state management, TanStack Query mock APIs, and a service node inspector UI.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 📦 Setup Instructions
 
-## React Compiler
+1. **Clone the repo**
+```bash
+git clone https://github.com/Krishkumar2005/reactflow-canvas.git
+cd reactflow-canvas
+Install dependencies
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+bash
+Copy code
+npm install
+# or
+yarn install
+Run development server
 
-## Expanding the ESLint configuration
+bash
+Copy code
+npm run dev
+# or
+yarn dev
+Build for production
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+bash
+Copy code
+npm run build
+# or
+yarn build
+Preview production build
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+bash
+Copy code
+npm run preview
+# or
+yarn preview
+Lint & type check
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+bash
+Copy code
+npm run lint
+npm run typecheck
+🧠 Key Decisions (Brief)
+React + TypeScript (strict): type-safe, modern frontend with Vite for fast development.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+ReactFlow (xyflow): handles node/edge rendering, drag, pan, zoom, selection.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Zustand: minimal, reactive state for selectedAppId, selectedNodeId, mobile panel, and activeInspectorTab.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+TanStack Query: mock API fetching with caching, loading, and error states.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+shadcn/ui: consistent UI components (Tabs, Slider, Input, Badge, Button).
+
+Mock APIs: implemented via setTimeout returning Promises; no real backend needed.
+
+Responsive layout: right panel becomes a mobile slide-over drawer.
+
+⚠️ Known Limitations
+Mobile responsiveness may need further fine-tuning on very small screens.
+
+Canvas does not persist data between reloads (no backend persistence).
+
+Node deletion only works via Delete/Backspace, no undo implemented.
+
+Error handling in mock APIs is minimal (can simulate via toggles).
+
+No unit/integration tests yet.
+
+Performance may degrade with very large graphs (>100 nodes).
+
+🧰 Tech Stack
+Frontend: React + Vite + TypeScript (strict)
+
+Canvas: ReactFlow (nodes + edges + interactions)
+
+UI Components: shadcn/ui
+
+State Management: Zustand
+
+Data Fetching: TanStack Query (mock APIs)
+
+Styling: Tailwind CSS
