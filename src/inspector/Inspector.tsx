@@ -9,8 +9,10 @@ export default function Inspector() {
   const nodeId = useUIStore((s) => s.selectedNodeId);
   const tab = useUIStore((s) => s.activeTab);
   const setTab = useUIStore((s) => s.setTab);
+  const editNodeLabel = useUIStore((s) => s.editNodeLabel)
   const [load, setLoad] = useState<number| null>(40)
 
+  
   if (!nodeId) return <div>Select a node</div>;
 
   return (
@@ -24,7 +26,7 @@ export default function Inspector() {
         </TabsList>
 
         <TabsContent value="config" className='mt-4'>
-          <Input placeholder="Service name" className='mb-3'/>
+          <Input type='text'  placeholder="Service name" className='mb-3' onChange={(e) => editNodeLabel((e.target.value).toString())}/>
           <Slider min={Number(0)} value={[Number(load)]} max={100} className='mb-3' onValueChange={(e) => setLoad(e[0])}/>
           <Input value={Number(load)} type="number" onChange={(e) => setLoad(Number(e.target.value))}/>
         </TabsContent>

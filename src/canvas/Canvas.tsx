@@ -1,4 +1,4 @@
-import {ReactFlow, Background, Controls, BackgroundVariant, applyEdgeChanges, applyNodeChanges, MiniMap, addEdge } from '@xyflow/react';
+import {ReactFlow, Background, Controls, BackgroundVariant, applyEdgeChanges, applyNodeChanges, MiniMap, addEdge} from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import { useUIStore } from '../store/uiStore';
 import { useGraph } from '../hooks/useGraph';
@@ -8,13 +8,15 @@ export default function Canvas() {
   const appId = useUIStore((s) => s.selectedAppId);
   const setNode = useUIStore((s) => s.setNode);
   const { data } = useGraph(appId);
-
-  const [nodes, setNodes] = useState(data?.nodes || []);
+  const addNode = useUIStore((s) => s.addNode)
+  const node = useUIStore((s) => s.nodes)
+  const [nodes, setNodes] = useState(node || []);
   const [edges, setEdges] = useState(data?.edges || []);
 
   useEffect(() => {
     if (data) {
-      setNodes(data.nodes);
+      addNode(data?.nodes)
+      setNodes(node);
       setEdges(data.edges);
     }
   }, [data]);
