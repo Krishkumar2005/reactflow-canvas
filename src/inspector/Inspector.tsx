@@ -26,7 +26,7 @@ export default function Inspector() {
         </TabsList>
 
         <TabsContent value="config" className='mt-4'>
-          <Input type='text'  placeholder="Service name" className='mb-3' onChange={(e) => editNodeLabel((e.target.value).toString())}/>
+          <Input type='text'  placeholder="-- Service name --" className='mb-3' onChange={(e) => editNodeLabel((e.target.value).toString())}/>
           <Slider min={Number(0)} value={[Number(load)]} max={100} className='mb-3' onValueChange={(e) => setLoad(e[0])}/>
           <Input value={Number(load)} type="number" onChange={(e) => setLoad(Number(e.target.value))}/>
         </TabsContent>
